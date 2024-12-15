@@ -84,7 +84,7 @@
     position: relative;
     margin-right: 25px;
     padding: 35px 0;
-    color: #050505 !important;
+    color: #000000 !important;
     font-size: 18px;
     font-weight: 600;
     outline: none;
@@ -173,7 +173,7 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../src/assets/img/bg-hero.jpg);
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/bg-hero.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -269,7 +269,7 @@
 
 /*** Booking ***/
 .booking {
-    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(./assets/img/booking.jpg);
+    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../img/booking.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
