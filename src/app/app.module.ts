@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { HomeComponent } from './layout/pages/home/home.component';
 import { AboutComponent } from './layout/pages/about/about.component';
 import { ServicesComponent } from './layout/pages/services/services.component';
 import { DestinationComponent } from './layout/pages/destination/destination.component';
+import { NotFoundComponent } from './layout/pages/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,15 +21,16 @@ import { DestinationComponent } from './layout/pages/destination/destination.com
     HomeComponent,
     AboutComponent,
     ServicesComponent,
-    DestinationComponent
+    DestinationComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [
-    provideClientHydration(withEventReplay())
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
