@@ -1,5 +1,24 @@
 <div class="container-xxl py-5">
     <div class="container">
+        <!-- Price Filter -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <div class="price-filter">
+                    <h6 class="text-primary mb-3">Filter by Maximum Price</h6>
+                    <div class="input-group">
+                        <input type="number" 
+                               class="form-control" 
+                               [(ngModel)]="maxPrice" 
+                               placeholder="Enter maximum price">
+                        <button class="btn btn-primary" 
+                                (click)="filterByPrice(maxPrice)">
+                            Filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Loading Spinner -->
         <div *ngIf="loading" class="text-center">
             <div class="spinner-border text-primary" role="status">

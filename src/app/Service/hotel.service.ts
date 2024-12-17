@@ -34,4 +34,7 @@ export class HotelService {
   deleteHotel(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  getHotelsByMaxPrice(maxPrice: number): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(`${this.apiUrl}/price/${maxPrice}`);
+  }
 }

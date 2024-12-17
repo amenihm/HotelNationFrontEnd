@@ -16,6 +16,7 @@ export class DestinationComponent implements OnInit {
   displayLimit: { [key: string]: number } = {};
   itemsPerLoad = 3;
   loading = false;
+  maxPrice: number = 0;
 
   constructor(
     private hotelService: HotelService,
@@ -25,23 +26,48 @@ export class DestinationComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const searchLocation = params['location'];
-      if (searchLocation) {
-        this.hotelService.getHotelsByLocation(searchLocation).subscribe({
-          next: (data: Hotel[]) => {
-            this.hotels = data;
-            this.organizeHotelsByLocation();
-            this.loading = false;
-          },
-          error: (error) => {
-            console.error('Error fetching hotels:', error);
-            this.loading = false;
-          }
-        });
+      const maxPrice = params['maxPrice'];
+      
+      if (maxPrice) {
+        this.filterByPrice(maxPrice);
+      } else if (searchLocation) {
+        this.filterByLocation(searchLocation);
       } else {
         this.fetchHotels();
       }
     });
   }
+
+  filterByPrice(maxPrice: number): void {
+    this.loading = true;
+    this.hotelService.getHotelsByMaxPrice(maxPrice).subscribe({
+      next: (data: Hotel[]) => {
+        this.hotels = data;
+        this.organizeHotelsByLocation();
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error fetching hotels by price:', error);
+        this.loading = false;
+      }
+    });
+  }
+
+  filterByLocation(location: string): void {
+    this.loading = true;
+    this.hotelService.getHotelsByLocation(location).subscribe({
+      next: (data: Hotel[]) => {
+        this.hotels = data;
+        this.organizeHotelsByLocation();
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error fetching hotels by location:', error);
+        this.loading = false;
+      }
+    });
+  }
+
   fetchHotels(): void {
     this.loading = true;
     this.hotelService.getAllHotels().subscribe({
