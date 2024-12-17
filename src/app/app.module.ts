@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +14,6 @@ import { AboutComponent } from './layout/pages/about/about.component';
 import { ServicesComponent } from './layout/pages/services/services.component';
 import { DestinationComponent } from './layout/pages/destination/destination.component';
 import { NotFoundComponent } from './layout/pages/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

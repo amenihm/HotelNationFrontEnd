@@ -20,8 +20,7 @@
                 <a routerLink="/destination" routerLinkActive="active" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Destination</a>
                 <div class="dropdown-menu m-0">
                     <a routerLink="/destination" routerLinkActive="active" class="dropdown-item">Destination</a>
-                    <a  *ngFor="let hotel of hotels">Hotels - {{hotel.Location}}</a>
-
+                    <a *ngFor="let hotel of hotels">Hotels - {{hotel.location}}</a>
                 </div>
             </div>
         </div>
